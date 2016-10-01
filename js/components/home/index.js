@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Container, Header, List, ListItem, Thumbnail, Title, Content, Text, Button, Icon } from 'native-base';
-import { Grid, Row } from 'react-native-easy-grid';
 
 import { openDrawer, closeDrawer } from '../../actions/drawer';
 import { replaceRoute, replaceOrPushRoute } from '../../actions/route';
@@ -37,14 +36,9 @@ class Home extends Component {
     return (
       <Container theme={myTheme} style={styles.container}>
         <Header>
-          <Button transparent onPress={() => this.replaceRoute('login')}>
-            <Icon name="ios-power" />
-          </Button>
-
-          <Title>{(this.props.name) ? this.props.name : 'Home'}</Title>
-
+          <Title>ДайвПринт</Title>
           <Button transparent onPress={this.props.openDrawer}>
-            <Icon name="ios-menu" />
+            <Icon name="ios-menu" style={{ color: myTheme.toolbarIconColor }} />
           </Button>
         </Header>
 

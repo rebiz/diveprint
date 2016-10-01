@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Content, Text, List, ListItem } from 'native-base';
+import { Content, Icon, Text, List, ListItem } from 'native-base';
 
 import { setIndex } from '../../actions/list';
 import { closeDrawer } from '../../actions/drawer';
@@ -26,12 +26,26 @@ class SideBar extends Component {
   render() {
     return (
       <Content theme={myTheme} style={styles.sidebar} >
-        <List>
-          <ListItem button onPress={() => this.navigateTo('home')} >
-            <Text>Home</Text>
+        <List foregroundColor={'white'}>
+          <ListItem button onPress={() => this.navigateTo('home')} iconLeft={true}>
+              <Icon name='ios-home' />
+              <Text>Главная</Text>
           </ListItem>
-          <ListItem button onPress={() => this.navigateTo('blankPage')} >
-            <Text>Blank Page</Text>
+          <ListItem button onPress={() => this.navigateTo('blankPage')} iconLeft={true}>
+              <Icon name='logo-instagram' />
+              <Text>Наши работы</Text>
+          </ListItem>
+          <ListItem button onPress={() => this.navigateTo('blankPage')} iconLeft={true}>
+              <Icon name='ios-keypad' />
+              <Text>Услуги</Text>
+          </ListItem>
+          <ListItem button onPress={() => this.navigateTo('blankPage')} iconLeft={true}>
+              <Icon name='ios-calculator' />
+              <Text>Калькулятор</Text>
+          </ListItem>
+          <ListItem button onPress={() => this.navigateTo('blankPage')} iconLeft={true}>
+              <Icon name='ios-call' />
+              <Text>Контакты</Text>
           </ListItem>
         </List>
       </Content>
