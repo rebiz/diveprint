@@ -1,12 +1,11 @@
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Container, Header, List, ListItem, View, Thumbnail, Title, Content, Text, Button, Icon} from 'native-base';
 
-import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
-import { connect } from 'react-redux';
-import { Container, Header, List, ListItem, Thumbnail, Title, Content, Text, Button, Icon } from 'native-base';
-
-import { openDrawer, closeDrawer } from '../../actions/drawer';
-import { replaceRoute, replaceOrPushRoute } from '../../actions/route';
-import { setIndex } from '../../actions/list';
+import {openDrawer, closeDrawer} from '../../actions/drawer';
+import {replaceRoute, replaceOrPushRoute} from '../../actions/route';
+import {setIndex} from '../../actions/list';
+import Bottom from '../bottom';
 import myTheme from '../../themes/base-theme';
 import styles from './styles';
 
@@ -19,7 +18,7 @@ class Home extends Component {
     replaceOrPushRoute: React.PropTypes.func,
     setIndex: React.PropTypes.func,
     name: React.PropTypes.string,
-    list: React.PropTypes.arrayOf(React.PropTypes.string),
+    list: React.PropTypes.arrayOf(React.PropTypes.string)
   }
 
   replaceRoute(route) {
@@ -35,13 +34,13 @@ class Home extends Component {
   render() {
     return (
       <Container theme={myTheme} style={styles.container}>
+      <View>
         <Header>
           <Title>ДайвПринт</Title>
           <Button transparent onPress={this.props.openDrawer}>
-            <Icon name="ios-menu" style={{ color: myTheme.toolbarIconColor }} />
+            <Icon name='ios-menu' style={{color: myTheme.toolbarIconColor}} />
           </Button>
         </Header>
-
         <Content>
           <List>
             <ListItem>
@@ -59,8 +58,10 @@ class Home extends Component {
               <Text style={{color: '#000'}}>Брошюровка и переплет</Text>
               <Text note>Твердый и мягкий переплет книг, дипломных проектов и диссертаций</Text>
             </ListItem>
-        </List>
+          </List>
         </Content>
+        <Bottom page='home' />
+        </View>
       </Container>
     );
   }
@@ -72,14 +73,14 @@ function bindAction(dispatch) {
     closeDrawer: () => dispatch(closeDrawer()),
     replaceRoute: route => dispatch(replaceRoute(route)),
     replaceOrPushRoute: route => dispatch(replaceOrPushRoute(route)),
-    setIndex: index => dispatch(setIndex(index)),
+    setIndex: index => dispatch(setIndex(index))
   };
 }
 
 function mapStateToProps(state) {
   return {
     name: state.user.name,
-    list: state.list.list,
+    list: state.list.list
   };
 }
 

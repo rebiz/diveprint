@@ -1,18 +1,21 @@
 
-import React, { Component } from 'react';
-import { BackAndroid, Platform, StatusBar, Navigator } from 'react-native';
-import { connect } from 'react-redux';
-import { Drawer } from 'native-base';
+import React, {Component} from 'react';
+import {BackAndroid, Platform, StatusBar, Navigator} from 'react-native';
+import {connect} from 'react-redux';
+import {Drawer} from 'native-base';
 
-import { closeDrawer } from './actions/drawer';
-import { popRoute } from './actions/route';
+import {closeDrawer} from './actions/drawer';
+import {popRoute} from './actions/route';
 
 import Login from './components/login/';
 import Home from './components/home/';
+import Contacts from './components/contacts/';
+import Works from './components/works/';
+import Services from './components/services/';
 import BlankPage from './components/blankPage';
 import SplashPage from './components/splashscreen/';
 import SideBar from './components/sideBar';
-import { statusBarColor } from './themes/base-theme';
+import {statusBarColor} from './themes/base-theme';
 
 Navigator.prototype.replaceWithAnimation = function replaceWithAnimation(route) {
   const activeLength = this.state.presentedIndex + 1;
@@ -27,7 +30,7 @@ Navigator.prototype.replaceWithAnimation = function replaceWithAnimation(route) 
   this._emitWillFocus(nextStack[destIndex]);
   this.setState({
     routeStack: nextStack,
-    sceneConfigStack: nextAnimationConfigStack,
+    sceneConfigStack: nextAnimationConfigStack
   }, () => {
     this._enableScene(destIndex);
     this._transitionTo(destIndex, nextSceneConfig.defaultTransitionVelocity, null, () => {
@@ -43,7 +46,7 @@ class AppNavigator extends Component {
   static propTypes = {
     drawerState: React.PropTypes.string,
     popRoute: React.PropTypes.func,
-    closeDrawer: React.PropTypes.func,
+    closeDrawer: React.PropTypes.func
   }
 
   componentDidMount() {
@@ -95,6 +98,12 @@ class AppNavigator extends Component {
         return <Login navigator={navigator} />;
       case 'home':
         return <Home navigator={navigator} />;
+      case 'contacts':
+        return <Contacts navigator={navigator} />;
+      case 'works':
+        return <Works navigator={navigator} />;
+      case 'services':
+        return <Services navigator={navigator} />;
       case 'blankPage':
         return <BlankPage navigator={navigator} />;
       default :
@@ -106,7 +115,7 @@ class AppNavigator extends Component {
     return (
       <Drawer
         ref={(ref) => { this._drawer = ref; }}
-        type="overlay"
+        type='overlay'
         content={<SideBar navigator={this._navigator} />}
         tapToClose
         acceptPan={false}
@@ -117,14 +126,14 @@ class AppNavigator extends Component {
       >
         <StatusBar
           backgroundColor={statusBarColor}
-          barStyle="default"
+          barStyle='default'
         />
         <Navigator
           ref={(ref) => {
             this._navigator = ref;
           }}
           configureScene={() => Navigator.SceneConfigs.FloatFromRight}
-          initialRoute={{ id: (Platform.OS === 'android') ? 'splashscreen' : 'home', statusBarHidden: true }}
+          initialRoute={{id: (Platform.OS === 'android') ? 'splashscreen' : 'home', statusBarHidden: true}}
           renderScene={this.renderScene}
         />
       </Drawer>
@@ -134,11 +143,11 @@ class AppNavigator extends Component {
 
 const bindAction = dispatch => ({
   closeDrawer: () => dispatch(closeDrawer()),
-  popRoute: () => dispatch(popRoute()),
+  popRoute: () => dispatch(popRoute())
 });
 
 const mapStateToProps = state => ({
-  drawerState: state.drawer.drawerState,
+  drawerState: state.drawer.drawerState
 });
 
 export default connect(mapStateToProps, bindAction)(AppNavigator);
