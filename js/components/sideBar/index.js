@@ -14,7 +14,7 @@ class SideBar extends Component {
   static propTypes = {
     closeDrawer: React.PropTypes.func,
     setIndex: React.PropTypes.func,
-    replaceOrPushRoute: React.PropTypes.func,
+    replaceOrPushRoute: React.PropTypes.func
   }
 
   navigateTo(route) {
@@ -31,19 +31,19 @@ class SideBar extends Component {
               <Icon name='ios-home' />
               <Text>Главная</Text>
           </ListItem>
-          <ListItem button onPress={() => this.navigateTo('blankPage')} iconLeft={true}>
+          <ListItem button onPress={() => this.navigateTo('works')} iconLeft={true}>
               <Icon name='logo-instagram' />
               <Text>Наши работы</Text>
           </ListItem>
-          <ListItem button onPress={() => this.navigateTo('blankPage')} iconLeft={true}>
+          <ListItem button onPress={() => this.navigateTo('services')} iconLeft={true}>
               <Icon name='ios-keypad' />
               <Text>Услуги</Text>
           </ListItem>
-          <ListItem button onPress={() => this.navigateTo('blankPage')} iconLeft={true}>
+          <ListItem button onPress={() => this.navigateTo('calc')} iconLeft={true}>
               <Icon name='ios-calculator' />
               <Text>Калькулятор</Text>
           </ListItem>
-          <ListItem button onPress={() => this.navigateTo('blankPage')} iconLeft={true}>
+          <ListItem button onPress={() => this.navigateTo('contacts')} iconLeft={true}>
               <Icon name='ios-call' />
               <Text>Контакты</Text>
           </ListItem>

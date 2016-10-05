@@ -8,6 +8,7 @@ import {closeDrawer} from './actions/drawer';
 import {popRoute} from './actions/route';
 
 import Login from './components/login/';
+import Calc from './components/calc/';
 import Home from './components/home/';
 import Contacts from './components/contacts/';
 import Works from './components/works/';
@@ -94,6 +95,8 @@ class AppNavigator extends Component {
     switch (route.id) {
       case 'splashscreen':
         return <SplashPage navigator={navigator} />;
+      case 'calc':
+        return <Calc navigator={navigator} />;
       case 'login':
         return <Login navigator={navigator} />;
       case 'home':

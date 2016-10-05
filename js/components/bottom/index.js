@@ -39,7 +39,7 @@ class Bottom extends Component {
             <View active={page === 'services'} onPress={() => this.navigateTo('services')} >
               <Icon name='ios-keypad' />
             </View>
-            <View active={page === 'calc'}>
+            <View active={page === 'calc'} onPress={() => this.navigateTo('calc')}>
               <Icon name='ios-calculator' />
             </View>
             <View active={page === 'contacts'} onPress={() => this.navigateTo('contacts')} >

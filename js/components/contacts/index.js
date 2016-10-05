@@ -1,8 +1,8 @@
 
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Container, Footer, FooterTab, View, Header, Title, Content, Text, Button, Icon} from 'native-base';
-
+import {Container, View, Header, Title, Content, Text, Button, Icon} from 'native-base';
+import Bottom from '../bottom';
 import {openDrawer, closeDrawer} from '../../actions/drawer';
 import {popRoute, replaceRoute, replaceOrPushRoute} from '../../actions/route';
 import myTheme from '../../themes/base-theme';
@@ -32,6 +32,7 @@ class Contacts extends Component {
 
     return (
       <Container theme={myTheme}>
+      <View>
         <Header>
         <Button transparent onPress={this.props.openDrawer}>
           <Icon name='ios-menu' style={{color: myTheme.toolbarIconColor}} />
@@ -43,25 +44,8 @@ class Contacts extends Component {
             Контакты
           </Text>
         </Content>
-        <Footer>
-          <FooterTab>
-            <View onPress={() => this.navigateTo('home')} >
-              <Icon name='ios-home' />
-            </View>
-            <View>
-              <Icon name='logo-instagram' />
-            </View>
-            <View>
-              <Icon name='ios-keypad' />
-            </View>
-            <View>
-              <Icon name='ios-calculator' />
-            </View>
-            <View active>
-              <Icon name='ios-call' />
-            </View>
-          </FooterTab>
-        </Footer>
+        <Bottom page='contacts' />
+        </View>
       </Container>
     );
   }
