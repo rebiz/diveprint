@@ -1,10 +1,9 @@
 
 import React from 'react';
-import { ProgressViewIOS } from 'react-native';
+import {ProgressViewIOS} from 'react-native';
 import NativeBaseComponent from 'native-base/Components/Base/NativeBaseComponent';
 
 export default class ProgressBarNB extends NativeBaseComponent {
-
 
   render() {
     const getColor = () => {

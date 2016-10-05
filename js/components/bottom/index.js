@@ -61,11 +61,8 @@ function bindAction(dispatch) {
   };
 }
 
-function mapStateToProps(state) {
-  return {
-    name: state.user.name,
-    list: state.list.list
-  };
+function mapStateToProps() {
+  return {};
 }
 
 export default connect(mapStateToProps, bindAction)(Bottom);

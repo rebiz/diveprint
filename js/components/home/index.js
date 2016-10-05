@@ -42,23 +42,7 @@ class Home extends Component {
           </Button>
         </Header>
         <Content>
-          <List>
-            <ListItem>
-              <Thumbnail square size={80} source={require('../../../images/blackwhite.jpg')} />
-              <Text style={{color: '#000'}}> Черно-белое копирование и печать</Text>
-              <Text note>Профессионально, оперативно, качественно и копируем черно-белые документы!</Text>
-            </ListItem>
-            <ListItem>
-              <Thumbnail square size={80} source={require('../../../images/color.jpg')} />
-              <Text style={{color: '#000'}}>Цветное копирование и цветная печать</Text>
-              <Text note>У нас Вам быстро и по доступной цене сделают цветные копии документов</Text>
-            </ListItem>
-            <ListItem>
-              <Thumbnail square size={80} source={require('../../../images/pereplet.jpg')} />
-              <Text style={{color: '#000'}}>Брошюровка и переплет</Text>
-              <Text note>Твердый и мягкий переплет книг, дипломных проектов и диссертаций</Text>
-            </ListItem>
-          </List>
+          <Text>Home</Text>
         </Content>
         <Bottom page='home' />
         </View>
@@ -77,11 +61,8 @@ function bindAction(dispatch) {
   };
 }
 
-function mapStateToProps(state) {
-  return {
-    name: state.user.name,
-    list: state.list.list
-  };
+function mapStateToProps() {
+  return {};
 }
 
 export default connect(mapStateToProps, bindAction)(Home);

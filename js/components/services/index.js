@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Container, View, Header, Title, Content, Text, Button, Icon} from 'native-base';
+import {Container, List, ListItem, Thumbnail, View, Header, Title, Content, Text, Button, Icon} from 'native-base';
 import Bottom from '../bottom';
 import {openDrawer, closeDrawer} from '../../actions/drawer';
 import {popRoute, replaceRoute, replaceOrPushRoute} from '../../actions/route';
@@ -41,9 +41,23 @@ class Services extends Component {
           <Title>Услуги</Title>
         </Header>
         <Content padder>
-          <Text>
-            Услуги
-          </Text>
+        <List>
+          <ListItem>
+            <Thumbnail square size={80} source={require('../../../images/blackwhite.jpg')} />
+            <Text style={{color: '#000'}}> Черно-белое копирование и печать</Text>
+            <Text note>Профессионально, оперативно, качественно и копируем черно-белые документы!</Text>
+          </ListItem>
+          <ListItem>
+            <Thumbnail square size={80} source={require('../../../images/color.jpg')} />
+            <Text style={{color: '#000'}}>Цветное копирование и цветная печать</Text>
+            <Text note>У нас Вам быстро и по доступной цене сделают цветные копии документов</Text>
+          </ListItem>
+          <ListItem>
+            <Thumbnail square size={80} source={require('../../../images/pereplet.jpg')} />
+            <Text style={{color: '#000'}}>Брошюровка и переплет</Text>
+            <Text note>Твердый и мягкий переплет книг, дипломных проектов и диссертаций</Text>
+          </ListItem>
+        </List>
         </Content>
         <Bottom page='services' />
         </View>

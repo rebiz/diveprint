@@ -7,7 +7,6 @@ import {Drawer} from 'native-base';
 import {closeDrawer} from './actions/drawer';
 import {popRoute} from './actions/route';
 
-import Login from './components/login/';
 import Calc from './components/calc/';
 import Home from './components/home/';
 import Contacts from './components/contacts/';
@@ -56,7 +55,7 @@ class AppNavigator extends Component {
     BackAndroid.addEventListener('hardwareBackPress', () => {
       const routes = this._navigator.getCurrentRoutes();
 
-      if (routes[routes.length - 1].id === 'home' || routes[routes.length - 1].id === 'login') {
+      if (routes[routes.length - 1].id === 'home') {
                 // CLose the app
         return false;
       }
@@ -97,8 +96,6 @@ class AppNavigator extends Component {
         return <SplashPage navigator={navigator} />;
       case 'calc':
         return <Calc navigator={navigator} />;
-      case 'login':
-        return <Login navigator={navigator} />;
       case 'home':
         return <Home navigator={navigator} />;
       case 'contacts':
@@ -110,7 +107,7 @@ class AppNavigator extends Component {
       case 'blankPage':
         return <BlankPage navigator={navigator} />;
       default :
-        return <Login navigator={navigator} />;
+        return <Home navigator={navigator} />;
     }
   }
 
