@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Container, View, Header, Title, Content, Text, Button, Icon} from 'native-base';
+import {Container,List, ListItem, View, Header, Title, Content, Text, Button, Icon} from 'native-base';
 import Bottom from '../bottom';
 import {openDrawer, closeDrawer} from '../../actions/drawer';
 import {popRoute, replaceRoute, replaceOrPushRoute} from '../../actions/route';
@@ -40,8 +40,16 @@ class Contacts extends Component {
           <Title>Контакты</Title>
         </Header>
         <Content padder>
+          <List>
+              <ListItem iconLeft>
+                  <Icon name='ios-telephone' />
+                  <Text>+7(495)720-41-99</Text>
+              </ListItem>
+          </List>
           <Text>
-            Контакты
+            orders@dive-print.ru
+            7204199@gmail.com
+
           </Text>
         </Content>
         <Bottom page='contacts' />
