@@ -1,13 +1,16 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Container, Header, List, ListItem, View, Thumbnail, Title, Content, Text, Button, Icon} from 'native-base';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Dimensions, Image, StyleSheet } from 'react-native';
+import { Container, Header, Card, CardItem, View, Title, Content, Button, Icon } from 'native-base';
 
-import {openDrawer, closeDrawer} from '../../actions/drawer';
-import {replaceRoute, replaceOrPushRoute} from '../../actions/route';
-import {setIndex} from '../../actions/list';
+import { openDrawer, closeDrawer } from '../../actions/drawer';
+import { replaceRoute, replaceOrPushRoute } from '../../actions/route';
 import Bottom from '../bottom';
 import myTheme from '../../themes/base-theme';
 import styles from './styles';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 class Home extends Component {
 
@@ -16,35 +19,43 @@ class Home extends Component {
     closeDrawer: React.PropTypes.func,
     replaceRoute: React.PropTypes.func,
     replaceOrPushRoute: React.PropTypes.func,
-    setIndex: React.PropTypes.func,
-    name: React.PropTypes.string,
-    list: React.PropTypes.arrayOf(React.PropTypes.string)
   }
 
   replaceRoute(route) {
     this.props.replaceRoute(route);
   }
 
-  navigateTo(route, index) {
+  navigateTo(route) {
     this.props.closeDrawer();
-    this.props.setIndex(index);
     this.props.replaceOrPushRoute(route);
   }
 
   render() {
+    const imageStyle = StyleSheet.create({
+      backgroundImage: {
+        width: windowWidth * 1,
+        height: windowHeight * 0.43,
+        flex: 1,
+        resizeMode: 'cover', // or 'stretch'
+      },
+    });
     return (
       <Container theme={myTheme} style={styles.container}>
-      <View>
-        <Header>
-          <Title>ДайвПринт</Title>
-          <Button transparent onPress={this.props.openDrawer}>
-            <Icon name='ios-menu' style={{color: myTheme.toolbarIconColor}} />
-          </Button>
-        </Header>
-        <Content>
-          <Text>Home</Text>
-        </Content>
-        <Bottom page='home' />
+        <View>
+          <Header>
+            <Title>ДайвПринт</Title>
+            <Button transparent onPress={this.props.openDrawer}>
+              <Icon name="ios-menu" style={{ color: myTheme.toolbarIconColor }} />
+            </Button>
+          </Header>
+          <Content>
+            <Card>
+              <CardItem>
+                <Image style={imageStyle.backgroundImage} source={require('../../../images/home.jpg')} />
+              </CardItem>
+            </Card>
+          </Content>
+          <Bottom page="home" />
         </View>
       </Container>
     );
@@ -57,7 +68,6 @@ function bindAction(dispatch) {
     closeDrawer: () => dispatch(closeDrawer()),
     replaceRoute: route => dispatch(replaceRoute(route)),
     replaceOrPushRoute: route => dispatch(replaceOrPushRoute(route)),
-    setIndex: index => dispatch(setIndex(index))
   };
 }
 
