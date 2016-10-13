@@ -1,13 +1,14 @@
 
 import React, {Component} from 'react';
+import {Linking} from 'react-native';
 import {connect} from 'react-redux';
 import {Container,List, ListItem, View, Header, Title, Content, Text, Button, Icon} from 'native-base';
 import Bottom from '../bottom';
 import {openDrawer, closeDrawer} from '../../actions/drawer';
 import {popRoute, replaceRoute, replaceOrPushRoute} from '../../actions/route';
 import myTheme from '../../themes/base-theme';
-class Contacts extends Component {
 
+class Contacts extends Component {
   static propTypes = {
     closeDrawer: React.PropTypes.func,
     replaceRoute: React.PropTypes.func,
@@ -29,7 +30,6 @@ class Contacts extends Component {
   }
   render() {
     const {props: {index, list}} = this;
-
     return (
       <Container theme={myTheme}>
       <View>
@@ -41,16 +41,19 @@ class Contacts extends Component {
         </Header>
         <Content padder>
           <List>
-              <ListItem iconLeft>
-                  <Icon name='ios-telephone' />
+              <ListItem iconLeft onPress={() => Linking.openURL('tel:84957204199')}>
+                  <Icon name='ios-call' />
                   <Text>+7(495)720-41-99</Text>
               </ListItem>
+              <ListItem iconLeft>
+                  <Icon name='ios-mail' />
+                  <Text>orders@dive-print.ru</Text>
+              </ListItem>
+              <ListItem iconLeft>
+                  <Icon name='ios-mail' />
+                  <Text>7204199@gmail.com</Text>
+              </ListItem>
           </List>
-          <Text>
-            orders@dive-print.ru
-            7204199@gmail.com
-
-          </Text>
         </Content>
         <Bottom page='contacts' />
         </View>
