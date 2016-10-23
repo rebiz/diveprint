@@ -46,7 +46,7 @@ export default function (state:State = initialState, action:Action): State {
       globalNav.navigator.resetTo({ id: 'home' });
       routes = [];
     } else {
-      globalNav.navigator.replaceWithAnimation({ id: action.route });
+      globalNav.navigator.replace({ id: action.route });
       routes.pop();
     }
 
