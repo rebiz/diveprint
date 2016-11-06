@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dimensions, Image, StyleSheet } from 'react-native';
-import { Container, Header, Card, CardItem, View, Title, Text, Content, Button, Icon } from 'native-base';
+import { Container, Header, View, Title, Text, Content, Button, Icon } from 'native-base';
 
 import { openDrawer, closeDrawer } from '../../actions/drawer';
 import { replaceRoute, replaceOrPushRoute } from '../../actions/route';
@@ -52,7 +52,7 @@ class Home extends Component {
           <Content>
             <Image style={imageStyle.backgroundImage} source={require('../../../images/home.jpg')} />
             <Text>
-              Добро пожаловать!
+              Копировальный центр «ДайвПринт» приветствует на сайте клиентов и партнёров, с которыми налажено постоянное взаимовыгодное сотрудничество, а также наших будущих заказчиков!
             </Text>
           </Content>
           <Bottom page="home" />
