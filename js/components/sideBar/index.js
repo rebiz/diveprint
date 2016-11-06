@@ -14,7 +14,7 @@ class SideBar extends Component {
   static propTypes = {
     closeDrawer: React.PropTypes.func,
     setIndex: React.PropTypes.func,
-    replaceOrPushRoute: React.PropTypes.func
+    replaceOrPushRoute: React.PropTypes.func,
   }
 
   navigateTo(route) {
@@ -27,25 +27,25 @@ class SideBar extends Component {
     return (
       <Content theme={myTheme} style={styles.sidebar} >
         <List foregroundColor={'white'}>
-          <ListItem button onPress={() => this.navigateTo('home')} iconLeft={true}>
-              <Icon name='ios-home' />
-              <Text>Главная</Text>
+          <ListItem button onPress={() => this.navigateTo('home')} iconLeft>
+            <Icon name="ios-home" />
+            <Text>Главная</Text>
           </ListItem>
-          <ListItem button onPress={() => this.navigateTo('works')} iconLeft={true}>
-              <Icon name='logo-instagram' />
-              <Text>Наши работы</Text>
+          <ListItem button onPress={() => this.navigateTo('works')} iconLeft>
+            <Icon name="logo-instagram" />
+            <Text>Наши работы</Text>
           </ListItem>
-          <ListItem button onPress={() => this.navigateTo('services')} iconLeft={true}>
-              <Icon name='ios-keypad' />
-              <Text>Услуги</Text>
+          <ListItem button onPress={() => this.navigateTo('services')} iconLeft>
+            <Icon name="ios-keypad" />
+            <Text>Услуги</Text>
           </ListItem>
-          <ListItem button onPress={() => this.navigateTo('calc')} iconLeft={true}>
-              <Icon name='ios-calculator' />
-              <Text>Калькулятор</Text>
+          <ListItem button onPress={() => this.navigateTo('calc')} iconLeft>
+            <Icon name="ios-calculator" />
+            <Text>Калькулятор</Text>
           </ListItem>
-          <ListItem button onPress={() => this.navigateTo('contacts')} iconLeft={true}>
-              <Icon name='ios-call' />
-              <Text>Контакты</Text>
+          <ListItem button onPress={() => this.navigateTo('contacts')} iconLeft>
+            <Icon name="ios-call" />
+            <Text>Контакты</Text>
           </ListItem>
         </List>
       </Content>

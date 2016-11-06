@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Dimensions, Image, StyleSheet } from 'react-native';
-import { Container, Header, View, Title, Text, Content, Button, Icon } from 'native-base';
+import { Image, StyleSheet } from 'react-native';
+import { Card, CardItem, Container, Header, View, Title, Text, Content, Button, Icon } from 'native-base';
 
 import { openDrawer, closeDrawer } from '../../actions/drawer';
 import { replaceRoute, replaceOrPushRoute } from '../../actions/route';
 import Bottom from '../bottom';
 import myTheme from '../../themes/base-theme';
 import styles from './styles';
-
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 class Home extends Component {
 
@@ -31,15 +28,6 @@ class Home extends Component {
   }
 
   render() {
-    const imageStyle = StyleSheet.create({
-      backgroundImage: {
-        margin: 10,
-        width: windowWidth * 0.93,
-        height: windowHeight * 0.43,
-        flex: 1,
-        resizeMode: 'stretch', // or 'stretch'
-      },
-    });
     return (
       <Container theme={myTheme} style={styles.container}>
         <View>
@@ -50,10 +38,16 @@ class Home extends Component {
             </Button>
           </Header>
           <Content>
-            <Image style={imageStyle.backgroundImage} source={require('../../../images/home.jpg')} />
-            <Text>
-              Копировальный центр «ДайвПринт» приветствует на сайте клиентов и партнёров, с которыми налажено постоянное взаимовыгодное сотрудничество, а также наших будущих заказчиков!
-            </Text>
+            <Card padder>
+              <CardItem>
+                <Image style={{ resizeMode: 'cover' }} source={require('../../../images/home.jpg')} />
+                <Text>
+                Копировальный центр «ДайвПринт» приветствует на сайте клиентов и партнёров,
+                с которыми налажено постоянное взаимовыгодное сотрудничество,
+                а также наших будущих заказчиков!
+              </Text>
+              </CardItem>
+            </Card>
           </Content>
           <Bottom page="home" />
         </View>
