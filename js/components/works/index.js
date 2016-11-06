@@ -10,6 +10,10 @@ import { openDrawer, closeDrawer } from '../../actions/drawer';
 import { popRoute, replaceRoute, replaceOrPushRoute } from '../../actions/route';
 import myTheme from '../../themes/base-theme';
 
+const removeTags = (text) => {
+  const regexp = new RegExp('#([^\\s]*)', 'g');
+  return text.replace(regexp, '');
+};
 
 class Works extends Component {
 
@@ -60,7 +64,7 @@ class Works extends Component {
                  (<CardItem key={i}>
                    <Image style={{ resizeMode: 'cover' }} source={{ uri: item.images.standard_resolution.url }} />
                    <Text>
-                     {item.caption.text}
+                     {removeTags(item.caption.text)}
                    </Text>
                  </CardItem>)
               ) : <Spinner visible={this.state.visible} />}
