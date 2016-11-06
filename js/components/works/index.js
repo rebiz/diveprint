@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { Image } from 'react-native';
 import { connect } from 'react-redux';
 import { Container, Card, CardItem, View, Header, Title, Content, Text, Button, Icon } from 'native-base';
+import Spinner from 'react-native-loading-spinner-overlay';
 import Bottom from '../bottom';
 import { openDrawer, closeDrawer } from '../../actions/drawer';
 import { popRoute, replaceRoute, replaceOrPushRoute } from '../../actions/route';
@@ -27,12 +28,13 @@ class Works extends Component {
     super(props);
     this.state = {
       items: [],
+      visible: true,
     };
   }
   componentDidMount() {
     fetch('https://www.instagram.com/diveprint/media/')
     .then(response => response.json()).then((responseData) => {
-      this.setState({ items: responseData.items });
+      this.setState({ items: responseData.items, visible: !this.state.visible });
     });
   }
   popRoute() {
@@ -45,7 +47,7 @@ class Works extends Component {
   render() {
     return (
       <Container theme={myTheme}>
-        <View>
+        <View style={{ flex: 1 }}>
           <Header>
             <Button transparent onPress={this.props.openDrawer}>
               <Icon name="ios-menu" style={{ color: myTheme.toolbarIconColor }} />
@@ -61,8 +63,7 @@ class Works extends Component {
                      {item.caption.text}
                    </Text>
                  </CardItem>)
-
-              ) : undefined}
+              ) : <Spinner visible={this.state.visible} />}
             </Card>
           </Content>
           <Bottom page="works" />
